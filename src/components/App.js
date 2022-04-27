@@ -7,13 +7,28 @@ import '../styles/layout/header.scss';
 import '../styles/layout/instructions.scss';
 import '../styles/layout/letters.scss';
 import '../styles/layout/loading.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
 
 function App() {
   const [numberOfError, setNumberOfError] = useState(0);
   const [lastLetter, setLasLetter] = useState('');
   const [word, setWord] = useState('');
   const [userLetters, setuserLetters] = useState([]);
+
+
+
+  useEffect(() => {
+    fetch("https://beta.adalab.es/curso-intensivo-fullstack-recursos/apis/random-word-v1/word.json")
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      //setWord(word);
+      setWord(data.word)
+
+  })
+
+  }, []);
 
   const handleInput = (ev) => {
     const newValue = ev.target.value;
