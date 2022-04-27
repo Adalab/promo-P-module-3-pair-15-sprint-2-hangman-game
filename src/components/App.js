@@ -12,7 +12,7 @@ import { useState } from 'react';
 function App() {
   const [numberOfError, setNumberOfError] = useState(0);
   const [lastLetter, setLasLetter] = useState('');
-  const [word, setWord] = useState('katakroker');
+  const [word, setWord] = useState('');
   const [userLetters, setuserLetters] = useState([]);
 
   const handleInput = (ev) => {
