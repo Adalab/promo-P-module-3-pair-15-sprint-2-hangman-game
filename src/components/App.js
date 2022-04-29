@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Route } from 'react-router-dom';
 
 // api
 import getWordFromApi from '../services/api';
@@ -11,6 +12,8 @@ import '../styles/core/reset.scss';
 import Header from './Header';
 import Dummy from './Dummy';
 import SolutionLetters from './SolutionLetters';
+import Form from './Form';
+import Footer from './Footer';
 
 function App() {
   const [word, setWord] = useState('');
@@ -82,26 +85,11 @@ function App() {
             <h2 className="title">Letras falladas:</h2>
             <ul className="letters">{renderErrorLetters()}</ul>
           </div>
-          <form className="form" onSubmit={handleSubmit}>
-            <label className="title" htmlFor="last-letter">
-              Escribe una letra:
-            </label>
-            <input
-              autoFocus
-              autoComplete="off"
-              className="form__input"
-              maxLength="1"
-              type="text"
-              name="last-letter"
-              id="last-letter"
-              value={lastLetter}
-              onKeyDown={handleKeyDown}
-              onChange={handleChange}
-            />
-          </form>
+          <Form handleSubmit={handleSubmit} lastLetter={lastLetter} handleKeyDown={handleKeyDown} handleChange={handleChange} />
         </section>
         <Dummy getNumberOfErrors={getNumberOfErrors()} />
       </main>
+      <Footer />
     </div>
   );
 }
